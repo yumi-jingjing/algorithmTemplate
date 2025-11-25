@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { algorithmTemplates } from './templates';
+import { algorithmTemplates, Template } from './templates';
 
 export function activate(context: vscode.ExtensionContext) {
   // 注册代码补全提供者
@@ -22,13 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
         const lineText = line.text;
         const beforeCursor = lineText.substring(0, position.character);
 
-        // 检查是否匹配 //abs 或 // abs 或 // hp arr larger than 模式
-        // 当空格键触发时，空格已经被插入，所以需要检查：
-        // 1. //abs （后面可能有空格）
-        // 2. // abs （后面可能有空格）
-        // 3. // hp arr larger than （key 中包含空格）
-        // 匹配模式：必须以 // 开头，后面是关键字（可能包含空格），关键字后面可能有空格
-        // 先检查是否以 // 开头
+        // 检查是否匹配 // 开头的模式
         if (!beforeCursor.startsWith('//')) {
           return undefined;
         }
