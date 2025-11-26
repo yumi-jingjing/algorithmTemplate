@@ -2,7 +2,7 @@
   "name": "algorithm-template",
   "displayName": "Algorithm Template",
   "description": "自动插入灵神算法模板代码片段",
-  "version": "0.0.7",
+  "version": "0.1.1",
   "publisher": "liyunhua",
   "repository": {
     "type": "git",
@@ -36,8 +36,9 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "generate": "node scripts/generate-templates.js",
+    "compile": "npm run generate && tsc -p ./",
+    "watch": "npm run generate && tsc -watch -p ./"
   },
   "devDependencies": {
     "@types/vscode": "^1.74.0",
