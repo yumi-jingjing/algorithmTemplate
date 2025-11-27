@@ -4,7 +4,7 @@
 
 ## ✨ 功能特性
 
-- 🚀 **快速插入**：输入 `// abs` 即可自动插入函数模板；也可以输入`// a `所有以a的模板都可以匹配出来
+- 🚀 **快速插入**：输入 `// abs` 即可自动插入函数模板；也可以输入`// a `所有以a开关的key的模板都可以匹配出来
 - 📝 **代码补全**：支持空格键触发，显示详细说明
 - 🎯 **专注 Go 语言**：专为 Go 开发者设计
 - 🔧 **易于扩展**：可以轻松添加更多算法模板
@@ -1861,6 +1861,96 @@ func PrintlnBinary(mask int, n int) {
 		binStr = strings.Repeat("0", n-len(binStr)) + binStr
 	}
 	fmt.Println("mask:", binStr, "(十进制:", mask, ")")
+}
+```
+
+</details>
+
+### 其他
+
+#### `memoOne` - 一维记忆化搜索
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+p := &memo[i]
+if *p != -1 {
+  return *p
+}
+defer func() {
+  *p = res
+}()
+```
+
+</details>
+
+#### `memoThree` - 三维记忆化搜索
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+p := &memo[i][j][k]
+if *p != -1 {
+  return *p
+}
+defer func() {
+  *p = res
+}()
+```
+
+</details>
+
+#### `memoThreeInit` - 三维记忆化搜索初始化
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+memo := make([][][]int, n)
+for i := range memo {
+	memo[i] = make([][]int, m)
+	for j := range memo[i] {
+		memo[i][j] = make([]int, k)
+		for l := range memo[i][j] {
+			memo[i][j][l] = -1
+		}
+	}
+}
+```
+
+</details>
+
+#### `memoTwo` - 二维记忆化搜索
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+p := &memo[i][j]
+if *p != -1 {
+  return *p
+}
+defer func() {
+  *p = res
+}()
+```
+
+</details>
+
+#### `memoTwoInit` - 二维记忆化搜索初始化
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+memo := make([][]int, n)
+for i := range memo {
+	memo[i] = make([]int, m)
+	for j := range memo[i] {
+		memo[i][j] = -1
+	}
 }
 ```
 

@@ -1041,11 +1041,69 @@ func maxSlidingWindow(nums []int, k int) []int {
 }`
   },
 
+  'memoOne': {
+    description: '一维记忆化搜索',
+    code: `p := &memo[i]
+if *p != -1 {
+  return *p
+}
+defer func() {
+  *p = res
+}()`
+  },
+
   'memoOneInit': {
     description: '一维记忆化搜索初始化',
     code: `memo := make([]int, n)
 for i := range memo {
 	memo[i] = -1
+}`
+  },
+
+  'memoThree': {
+    description: '三维记忆化搜索',
+    code: `p := &memo[i][j][k]
+if *p != -1 {
+  return *p
+}
+defer func() {
+  *p = res
+}()`
+  },
+
+  'memoThreeInit': {
+    description: '三维记忆化搜索初始化',
+    code: `memo := make([][][]int, n)
+for i := range memo {
+	memo[i] = make([][]int, m)
+	for j := range memo[i] {
+		memo[i][j] = make([]int, k)
+		for l := range memo[i][j] {
+			memo[i][j][l] = -1
+		}
+	}
+}`
+  },
+
+  'memoTwo': {
+    description: '二维记忆化搜索',
+    code: `p := &memo[i][j]
+if *p != -1 {
+  return *p
+}
+defer func() {
+  *p = res
+}()`
+  },
+
+  'memoTwoInit': {
+    description: '二维记忆化搜索初始化',
+    code: `memo := make([][]int, n)
+for i := range memo {
+	memo[i] = make([]int, m)
+	for j := range memo[i] {
+		memo[i][j] = -1
+	}
 }`
   },
 
