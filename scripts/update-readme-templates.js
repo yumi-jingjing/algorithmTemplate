@@ -24,14 +24,15 @@ const categories = {
   '二分查找': ['binaryMin', 'binaryMax'],
   '位运算': ['logTrick', 'xorBasis'],
   '图论算法': ['bfs', 'dfs', 'dijkstra', 'floyd', 'kruskal', 'topologicalSort', 'bipart'],
-  '数据结构': ['fenwick', 'segmentTree', 'lazeSegmentTree', 'sparseTable', 'unionFind', 'weightUnionFind', 'lazyHeap', 'maxSlidingWindow', 'dis', 'hpCommon', 'hpLess', 'hpMore'],
+  '数据结构': ['fenwick', 'segmentTree', 'lazeSegmentTree', 'sparseTable', 'unionFind', 'weightUnionFind', 'lazyHeap', 'maxSlidingWindow', 'hpCommon', 'hpLess', 'hpMore'],
   '方向数组': ['dir4', 'dir8'],
   '动态规划': ['digitDP', 'f'],
   '数学相关': ['isPrime', 'primeInit', 'lpf', 'primeFactors', 'divisors', 'lcm', 'palindromes', 'myPow', 'pow'],
   '记忆化搜索': ['memoOneInit'],
   '单调栈': ['nearestGreater'],
   '树算法': ['lca'],
-  '工具函数': ['arrToLink', 'buildTree', 'linkToArr', 'printBinary']
+  '工具函数': ['arrToLink', 'buildTree', 'linkToArr', 'printBinary'],
+  '代码片段': ['cnt', 'dfsTree', 'dis', 'loopGrid', 'mn', 'mod', 'preSum', 'range']
 };
 
 // 生成模板列表部分
@@ -42,12 +43,12 @@ output += '> 📖 **完整列表**：查看 [模板文件说明](src/classify/RE
 // 按分类输出
 for (const [category, keys] of Object.entries(categories)) {
   output += `### ${category}\n\n`;
-  
+
   const categoryTemplates = keys
     .filter(key => templates[key])
     .map(key => ({ key, ...templates[key] }))
     .sort((a, b) => a.key.localeCompare(b.key));
-  
+
   for (const template of categoryTemplates) {
     output += `#### \`${template.key}\` - ${template.desc}\n\n`;
     output += `<details>\n<summary>点击查看代码</summary>\n\n`;
