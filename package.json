@@ -2,11 +2,11 @@
   "name": "algorithm-template",
   "displayName": "Algorithm Template",
   "description": "自动插入灵神算法模板代码片段",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "publisher": "liyunhua",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/algorithmTemplate.git"
+    "url": "https://github.com/yumi-jingjing/algorithmTemplate.git"
   },
   "license": "MIT",
   "icon": "icon.png",
