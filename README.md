@@ -1894,32 +1894,6 @@ for i := range dis {
 
 </details>
 
-#### `loopGrid` - 遍历网格
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-for i, rows := range grid {
-	for j, col := range rows {
-		
-	}
-}
-```
-
-</details>
-
-#### `mn` - 声明行列
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-m, n := len(grid), len(grid[0])
-```
-
-</details>
-
 #### `mod` - 声明取余
 
 <details>
@@ -1977,6 +1951,36 @@ for len(q0) > 0 || len(q1) > 0 {
 		p, q0 = q0[len(q0)-1], q0[:len(q0)-1]
 	} else {
 		p, q1 = q1[0], q1[1:]
+	}
+}
+```
+
+</details>
+
+#### `forGrid` - 遍历网格
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+for i, rows := range grid {
+	for j, col := range rows {
+		
+	}
+}
+```
+
+</details>
+
+#### `forMatrix` - 遍历网格
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+for i, rows := range matrix {
+	for j, col := range rows {
+		
 	}
 }
 ```
@@ -2067,6 +2071,28 @@ for i := range memo {
 		memo[i][j] = -1
 	}
 }
+```
+
+</details>
+
+#### `mnG` - 声明行列
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+m, n := len(grid), len(grid[0])
+```
+
+</details>
+
+#### `mnM` - 声明行列
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+m, n := len(matrix), len(matrix[0])
 ```
 
 </details>

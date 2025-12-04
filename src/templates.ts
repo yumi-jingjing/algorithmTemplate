@@ -548,6 +548,24 @@ func shortestPathFloyd(n int, edges [][]int) [][]int {
 }`
   },
 
+  'forGrid': {
+    description: '遍历网格',
+    code: `for i, rows := range grid {
+	for j, col := range rows {
+		
+	}
+}`
+  },
+
+  'forMatrix': {
+    description: '遍历网格',
+    code: `for i, rows := range matrix {
+	for j, col := range rows {
+		
+	}
+}`
+  },
+
   'hpCommon': {
     description: '整数堆（通用）',
     code: `type pair struct {
@@ -1005,15 +1023,6 @@ func logTrick(nums []int) {
 }`
   },
 
-  'loopGrid': {
-    description: '遍历网格',
-    code: `for i, rows := range grid {
-	for j, col := range rows {
-		
-	}
-}`
-  },
-
   'lpf': {
     description: '最小质因子预处理',
     code: `const mx = 1_000_001
@@ -1146,9 +1155,14 @@ for i := range memo {
 }`
   },
 
-  'mn': {
+  'mnG': {
     description: '声明行列',
     code: `m, n := len(grid), len(grid[0])`
+  },
+
+  'mnM': {
+    description: '声明行列',
+    code: `m, n := len(matrix), len(matrix[0])`
   },
 
   'mod': {
