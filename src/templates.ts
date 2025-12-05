@@ -123,15 +123,13 @@ check := func(mid int) bool {
 left :=  // 循环不变量：check(left) 恒为 true
 right :=  // 循环不变量：check(right) 恒为 false
 for left+1 < right {
-		mid := left + (right-left)/2
+		mid := left + ((right-left)>>1)
 		if check(mid) {
-				left = mid // 注意这里更新的是 left，和上面的模板反过来
+				left = mid 
 		} else {
 				right = mid
 		}
 }
-// 循环结束后 left+1 = right
-// 此时 check(left) == true 而 check(left+1) == check(right) == false
 // 所以 left 就是最大的满足 check 的值
 return left // check 更新的是谁，最终就返回谁`
   },
@@ -147,15 +145,13 @@ check := func(mid int) bool {
 left :=  // 循环不变量：check(left) 恒为 false
 right :=  // 循环不变量：check(right) 恒为 true
 for left+1 < right { // 开区间不为空
-		mid := left + (right-left)/2
-if check(mid) { // 说明 check(>= mid 的数) 均为 true
-				right = mid // 接下来在 (left, mid) 中二分答案
-		} else { // 说明 check(<= mid 的数) 均为 false
-				left = mid // 接下来在 (mid, right) 中二分答案
+		mid := left + ((right-left)>>1)
+		if check(mid) { 
+				right = mid 
+		} else { 
+				left = mid 
 		}
 }
-// 循环结束后 left+1 = right
-// 此时 check(left) == false 而 check(left+1) == check(right) == true
 // 所以 right 就是最小的满足 check 的值
 return right`
   },
@@ -1326,6 +1322,27 @@ func init() {
 		binStr = strings.Repeat("0", n-len(binStr)) + binStr
 	}
 	fmt.Println("mask:", binStr, "(十进制:", mask, ")")
+}`
+  },
+
+  'queue': {
+    description: 'bfs 队列',
+    code: `queue := []pair{{sx, sy, energy, 0}}
+vis[0][0]= true
+step := 0
+for len(queue) > 0 {
+	tmp := queue
+	queue = nil
+	for _, q := range tmp {
+		// 这里判断是否已经走到终点了
+		for _, d := range dir4 {
+			x, y := q.x+d.x, q.y+d.y
+			if x >= 0 && x < m && y >= 0 && y < n {
+
+			}
+		}
+	}
+	step++
 }`
   },
 
