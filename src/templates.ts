@@ -241,6 +241,13 @@ func buildTree(nums []any) *TreeNode {
     code: `cnt := map[int]int{}`
   },
 
+  'comb2': {
+    description: 'n 选 2',
+    code: `comb2 := func(x int) int {
+	return x * (x - 1) / 2
+}`
+  },
+
   'dfs': {
     description: '用dfs找连通块、判断是否有环',
     code: `func solve(n int, edges [][]int) (ans []int) {

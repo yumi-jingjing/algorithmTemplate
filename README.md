@@ -1953,6 +1953,19 @@ for len(q0) > 0 || len(q1) > 0 {
 
 </details>
 
+#### `comb2` - n 选 2
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+comb2 := func(x int) int {
+	return x * (x - 1) / 2
+}
+```
+
+</details>
+
 #### `forGrid` - 遍历网格
 
 <details>
