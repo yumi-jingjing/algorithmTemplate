@@ -2,7 +2,7 @@
   "name": "algorithm-template",
   "displayName": "Algorithm Template",
   "description": "自动插入灵神算法模板代码片段",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "publisher": "liyunhua",
   "repository": {
     "type": "git",

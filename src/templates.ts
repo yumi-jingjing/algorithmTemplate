@@ -248,6 +248,11 @@ func buildTree(nums []any) *TreeNode {
 }`
   },
 
+  'desc': {
+    description: '对数组进行从大小到排序',
+    code: `sort.Sort(sort.Reverse(sort.IntSlice(cnt)))`
+  },
+
   'dfs': {
     description: '用dfs找连通块、判断是否有环',
     code: `func solve(n int, edges [][]int) (ans []int) {

@@ -1966,6 +1966,17 @@ comb2 := func(x int) int {
 
 </details>
 
+#### `desc` - 对数组进行从大小到排序
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+sort.Sort(sort.Reverse(sort.IntSlice(cnt)))
+```
+
+</details>
+
 #### `forGrid` - 遍历网格
 
 <details>
