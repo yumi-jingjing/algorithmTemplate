@@ -250,6 +250,11 @@ func buildTree(nums []any) *TreeNode {
 
   'desc': {
     description: '对数组进行从大小到排序',
+    code: `slices.SortFunc(nums, func(a, b int) int { return b - a })`
+  },
+
+  'descOld': {
+    description: '对数组进行从大小到排序',
     code: `sort.Sort(sort.Reverse(sort.IntSlice(cnt)))`
   },
 
@@ -571,6 +576,16 @@ func shortestPathFloyd(n int, edges [][]int) [][]int {
 	for j, col := range rows {
 		
 	}
+}`
+  },
+
+  'gcd': {
+    description: 'gcd 最大公约数',
+    code: `func gcd(a, b int) int {
+	for a != 0 {
+		a, b = b%a, a
+	}
+	return b
 }`
   },
 

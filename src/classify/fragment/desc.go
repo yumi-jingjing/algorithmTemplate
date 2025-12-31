@@ -1,4 +1,4 @@
 // 对数组进行从大小到排序
 package main
 
-sort.Sort(sort.Reverse(sort.IntSlice(cnt)))
+slices.SortFunc(nums, func(a, b int) int { return b - a })

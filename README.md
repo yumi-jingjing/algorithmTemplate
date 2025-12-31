@@ -1972,6 +1972,17 @@ comb2 := func(x int) int {
 <summary>点击查看代码</summary>
 
 ```go
+slices.SortFunc(nums, func(a, b int) int { return b - a })
+```
+
+</details>
+
+#### `descOld` - 对数组进行从大小到排序
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
 sort.Sort(sort.Reverse(sort.IntSlice(cnt)))
 ```
 
@@ -2002,6 +2013,22 @@ for i, rows := range matrix {
 	for j, col := range rows {
 		
 	}
+}
+```
+
+</details>
+
+#### `gcd` - gcd 最大公约数
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+func gcd(a, b int) int {
+	for a != 0 {
+		a, b = b%a, a
+	}
+	return b
 }
 ```
 
