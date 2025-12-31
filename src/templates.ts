@@ -1006,6 +1006,14 @@ func lcm(a, b int) int {
 }`
   },
 
+  'listNode': {
+    description: '链表节点',
+    code: `type ListNode struct {
+	Val  int
+	Next *ListNode
+}`
+  },
+
   'logTrick': {
     description: '位运算的log trick技巧',
     code: `// 对于每个右端点 i，计算所有子数组的或值，打印这些或值的分布范围（子数组左端点范围）
@@ -1560,6 +1568,15 @@ func topologicalSort(n int, edges [][]int) []int {
 		return nil
 	}
 	return topoOrder[:n]
+}`
+  },
+
+  'treeNode': {
+    description: '二叉树节点',
+    code: `type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }`
   },
 

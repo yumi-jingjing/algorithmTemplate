@@ -19,21 +19,54 @@ while ((match = regex.exec(content)) !== null) {
 }
 
 // 分类映射
-const categories = {
-  '基础函数': ['abs', 'aeiou', 'atoi', 'b2i', 'sortFunc'],
-  '二分查找': ['binaryMin', 'binaryMax'],
-  '位运算': ['logTrick', 'xorBasis'],
-  '图论算法': ['bfs', 'dfs', 'dijkstra', 'floyd', 'kruskal', 'topologicalSort', 'bipart'],
-  '数据结构': ['fenwick', 'segmentTree', 'lazeSegmentTree', 'sparseTable', 'unionFind', 'weightUnionFind', 'lazyHeap', 'maxSlidingWindow', 'hpCommon', 'hpLess', 'hpMore'],
-  '方向数组': ['dir4', 'dir8'],
-  '动态规划': ['digitDP', 'f'],
-  '数学相关': ['isPrime', 'primeInit', 'lpf', 'primeFactors', 'divisors', 'lcm', 'palindromes', 'myPow', 'pow'],
-  '记忆化搜索': ['memoOneInit'],
-  '单调栈': ['nearestGreater'],
-  '树算法': ['lca'],
-  '工具函数': ['arrToLink', 'buildTree', 'linkToArr', 'printBinary'],
-  '代码片段': ['cnt', 'dfsTree', 'dis', 'loopGrid', 'mn', 'mod', 'preSum', 'range']
+const categoryMap = {
+  'base': '基础函数',
+  'binary': '二分查找',
+  'bit': '位运算',
+  'graphTheory': '图论算法',
+  'commonDataStructures': '数据结构',
+  'dir': '方向数组',
+  'dp': '动态规划',
+  'math': '数学相关',
+  'memo': '记忆化搜索',
+  'monotonicStack': '单调栈',
+  'tree': '树算法',
+  'tool': '工具函数',
+  'fragment': '代码片段',
+  'baseStruct': '基本数据结构'
 };
+
+const categories = {};
+const classifyDir = path.join(__dirname, '../src/classify');
+
+if (fs.existsSync(classifyDir)) {
+  const dirs = fs.readdirSync(classifyDir, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
+
+  // 按照 categoryMap 的顺序排序，未在 map 中的排在后面
+  const mapKeys = Object.keys(categoryMap);
+  dirs.sort((a, b) => {
+    const indexA = mapKeys.indexOf(a);
+    const indexB = mapKeys.indexOf(b);
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return a.localeCompare(b);
+  });
+
+  for (const dir of dirs) {
+    const categoryName = categoryMap[dir] || dir;
+    const dirPath = path.join(classifyDir, dir);
+    const files = fs.readdirSync(dirPath)
+      .filter(file => file.endsWith('.go'))
+      .map(file => file.replace(/\.go$/, ''));
+    
+    if (files.length > 0) {
+        categories[categoryName] = files;
+    }
+  }
+}
 
 // 生成模板列表部分
 let output = '## 📚 所有可用的模板 Key\n\n';

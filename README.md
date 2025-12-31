@@ -1374,6 +1374,22 @@ func init() {
 
 </details>
 
+#### `gcd` - gcd 最大公约数
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+func gcd(a, b int) int {
+	for a != 0 {
+		a, b = b%a, a
+	}
+	return b
+}
+```
+
+</details>
+
 #### `isPrime` - 判断质数
 
 <details>
@@ -1592,6 +1608,23 @@ func init() {
 
 ### 记忆化搜索
 
+#### `memoOne` - 一维记忆化搜索
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+p := &memo[i]
+if *p != -1 {
+  return *p
+}
+defer func() {
+  *p = res
+}()
+```
+
+</details>
+
 #### `memoOneInit` - 一维记忆化搜索初始化
 
 <details>
@@ -1601,6 +1634,77 @@ func init() {
 memo := make([]int, n)
 for i := range memo {
 	memo[i] = -1
+}
+```
+
+</details>
+
+#### `memoThree` - 三维记忆化搜索
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+p := &memo[i][j][k]
+if *p != -1 {
+  return *p
+}
+defer func() {
+  *p = res
+}()
+```
+
+</details>
+
+#### `memoThreeInit` - 三维记忆化搜索初始化
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+memo := make([][][]int, n)
+for i := range memo {
+	memo[i] = make([][]int, m)
+	for j := range memo[i] {
+		memo[i][j] = make([]int, k)
+		for l := range memo[i][j] {
+			memo[i][j][l] = -1
+		}
+	}
+}
+```
+
+</details>
+
+#### `memoTwo` - 二维记忆化搜索
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+p := &memo[i][j]
+if *p != -1 {
+  return *p
+}
+defer func() {
+  *p = res
+}()
+```
+
+</details>
+
+#### `memoTwoInit` - 二维记忆化搜索初始化
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+memo := make([][]int, n)
+for i := range memo {
+	memo[i] = make([]int, m)
+	for j := range memo[i] {
+		memo[i][j] = -1
+	}
 }
 ```
 
@@ -1842,6 +1946,28 @@ func PrintlnBinary(mask int, n int) {
 
 ### 代码片段
 
+#### `bfs01` - 01bfs
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+// 两个 slice 头对头，模拟 deque
+q0 := []pair{{}}
+q1 := []pair{}
+for len(q0) > 0 || len(q1) > 0 {
+	// 弹出队首
+	var p pair
+	if len(q0) > 0 {
+		p, q0 = q0[len(q0)-1], q0[:len(q0)-1]
+	} else {
+		p, q1 = q1[0], q1[1:]
+	}
+}
+```
+
+</details>
+
 #### `cnt` - 计数
 
 <details>
@@ -1849,6 +1975,41 @@ func PrintlnBinary(mask int, n int) {
 
 ```go
 cnt := map[int]int{}
+```
+
+</details>
+
+#### `comb2` - n 选 2
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+comb2 := func(x int) int {
+	return x * (x - 1) / 2
+}
+```
+
+</details>
+
+#### `desc` - 对数组进行从大小到排序
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+slices.SortFunc(nums, func(a, b int) int { return b - a })
+```
+
+</details>
+
+#### `descOld` - 对数组进行从大小到排序
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+sort.Sort(sort.Reverse(sort.IntSlice(cnt)))
 ```
 
 </details>
@@ -1890,104 +2051,6 @@ for i := range dis {
 
 </details>
 
-#### `mod` - 声明取余
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-const mod = 1_000_000_007
-```
-
-</details>
-
-#### `preSum` - 前缀和
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-n := len(nums)
-prefix := make([]int, n+1)
-for i, x := range nums {
-	prefix[i+1] = prefix[i] + x
-}
-```
-
-</details>
-
-#### `range` - 判断范围
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-if x >= 0 && x < m && y >= 0 && y < n  {
-	
-}
-```
-
-</details>
-
-### 其他
-
-#### `bfs01` - 01bfs
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-// 两个 slice 头对头，模拟 deque
-q0 := []pair{{}}
-q1 := []pair{}
-for len(q0) > 0 || len(q1) > 0 {
-	// 弹出队首
-	var p pair
-	if len(q0) > 0 {
-		p, q0 = q0[len(q0)-1], q0[:len(q0)-1]
-	} else {
-		p, q1 = q1[0], q1[1:]
-	}
-}
-```
-
-</details>
-
-#### `comb2` - n 选 2
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-comb2 := func(x int) int {
-	return x * (x - 1) / 2
-}
-```
-
-</details>
-
-#### `desc` - 对数组进行从大小到排序
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-slices.SortFunc(nums, func(a, b int) int { return b - a })
-```
-
-</details>
-
-#### `descOld` - 对数组进行从大小到排序
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-sort.Sort(sort.Reverse(sort.IntSlice(cnt)))
-```
-
-</details>
-
 #### `forGrid` - 遍历网格
 
 <details>
@@ -2018,110 +2081,6 @@ for i, rows := range matrix {
 
 </details>
 
-#### `gcd` - gcd 最大公约数
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-func gcd(a, b int) int {
-	for a != 0 {
-		a, b = b%a, a
-	}
-	return b
-}
-```
-
-</details>
-
-#### `memoOne` - 一维记忆化搜索
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-p := &memo[i]
-if *p != -1 {
-  return *p
-}
-defer func() {
-  *p = res
-}()
-```
-
-</details>
-
-#### `memoThree` - 三维记忆化搜索
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-p := &memo[i][j][k]
-if *p != -1 {
-  return *p
-}
-defer func() {
-  *p = res
-}()
-```
-
-</details>
-
-#### `memoThreeInit` - 三维记忆化搜索初始化
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-memo := make([][][]int, n)
-for i := range memo {
-	memo[i] = make([][]int, m)
-	for j := range memo[i] {
-		memo[i][j] = make([]int, k)
-		for l := range memo[i][j] {
-			memo[i][j][l] = -1
-		}
-	}
-}
-```
-
-</details>
-
-#### `memoTwo` - 二维记忆化搜索
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-p := &memo[i][j]
-if *p != -1 {
-  return *p
-}
-defer func() {
-  *p = res
-}()
-```
-
-</details>
-
-#### `memoTwoInit` - 二维记忆化搜索初始化
-
-<details>
-<summary>点击查看代码</summary>
-
-```go
-memo := make([][]int, n)
-for i := range memo {
-	memo[i] = make([]int, m)
-	for j := range memo[i] {
-		memo[i][j] = -1
-	}
-}
-```
-
-</details>
-
 #### `mnG` - 声明行列
 
 <details>
@@ -2140,6 +2099,32 @@ m, n := len(grid), len(grid[0])
 
 ```go
 m, n := len(matrix), len(matrix[0])
+```
+
+</details>
+
+#### `mod` - 声明取余
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+const mod = 1_000_000_007
+```
+
+</details>
+
+#### `preSum` - 前缀和
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+n := len(nums)
+prefix := make([]int, n+1)
+for i, x := range nums {
+	prefix[i+1] = prefix[i] + x
+}
 ```
 
 </details>
@@ -2166,6 +2151,50 @@ for len(queue) > 0 {
 		}
 	}
 	step++
+}
+```
+
+</details>
+
+#### `range` - 判断范围
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+if x >= 0 && x < m && y >= 0 && y < n  {
+	
+}
+```
+
+</details>
+
+### 基本数据结构
+
+#### `listNode` - 链表节点
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+```
+
+</details>
+
+#### `treeNode` - 二叉树节点
+
+<details>
+<summary>点击查看代码</summary>
+
+```go
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 ```
 
